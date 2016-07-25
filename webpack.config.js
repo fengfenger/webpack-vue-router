@@ -95,7 +95,7 @@ module.exports = {
             //.scss 文件想要编译，scss就需要这些东西！来编译处理
             {
                 test: /\.scss$/,
-                loader: extractSASS.extract(['css-loader', 'sass-loader'])
+                loader: extractSASS.extract(['css-loader?sourceMap!cssnext-loader', 'sass-loader'])
             },
             //html模板编译？
             {
