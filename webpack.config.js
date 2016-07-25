@@ -90,7 +90,7 @@ module.exports = {
             // 编译css并自动添加css前缀
             {
                 test: /\.css$/,
-                loader: 'style!css!autoprefixer'
+                 loader: extractSASS.extract('style', 'css')
             },
             //.scss 文件想要编译，scss就需要这些东西！来编译处理
             {
@@ -113,12 +113,15 @@ module.exports = {
     },
     // 转化成es5的语法
     babel: {
-        presets: ['es2015', 'stage-0'],
-        plugins: ['transform-runtime']
+        presets: ["es2015", "stage-0"],
+        "plugins": ["transform-runtime", ["component", [{
+            "libraryName": "mint-ui",
+            "style": true
+        }]]]
     },
     vue: {
         loaders: {
-            css: 'style!css!autoprefixer'
+            css: 'style!css!autoprefixer!scss'
         }
     },
     plugins: getPlugins(),
