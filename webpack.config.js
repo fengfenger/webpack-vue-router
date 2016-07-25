@@ -3,6 +3,8 @@ var path = require('path');
 
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var extractSASS = new ExtractTextPlugin('[contenthash:8].[name].css');
 
 // webpack扩展功能
 var rmdir = require('./bin/rmdir.js');
@@ -16,6 +18,7 @@ const publicPath = 'http://localhost:8080/';
 // webpack插件方法
 const getPlugins = function() {
     const plugins = [
+        extractSASS,
         new HtmlwebpackPlugin({
             title: 'startV',
             template: './index.html',
@@ -39,7 +42,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, './build'),
-        filename: '[name].js',
+        filename: '[hash:8].[name].js',
     },
     devtool: 'eval-source-map',
     devServer: {
@@ -84,7 +87,7 @@ module.exports = {
             //.scss 文件想要编译，scss就需要这些东西！来编译处理
             {
                 test: /\.scss$/,
-                loader: 'style!css!sass?sourceMap'
+                loader: extractSASS.extract(['css','sass'])
             },
             //html模板编译？
             {
