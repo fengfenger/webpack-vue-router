@@ -2,7 +2,7 @@ import './list.scss';
 
 module.exports = {
     template: require('./list.html'),
-    replace: true,
+    replace: false,
     data: function() {
         return {
             peoples: [{

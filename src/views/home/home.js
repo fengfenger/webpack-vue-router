@@ -2,7 +2,7 @@ import './home.scss';
 
 module.exports = {
     template: require('./home.html'),
-    replace: true,
+    replace: false,
     data: function() {
         return {
             name: "guowenfh",
