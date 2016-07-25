@@ -1,8 +1,8 @@
-@function px2rem($px) {//$px为需要转换的字号
-  @return $px / 37.5px * 1rem; //75px为根字体大小
+@function px2rem($px) {
+    //$px为需要转换的字号
+    @return $px / 37.5px * 1rem; //75px为根字体大小
 }
-
-$qwe:#2DD8AD;
+$qwe: #2DD8AD;
 body {
     background-color: $qwe;
     color: red;
@@ -18,11 +18,10 @@ a {
     font-size: px2rem(34px);
     color: black;
 }
-
-#test{
+#test {
     background: pink;
     height: px2rem(100px);
 }
-.mt-range-thumb{
+.mt-range-thumb {
     background: blue;
 }

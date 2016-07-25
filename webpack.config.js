@@ -90,12 +90,12 @@ module.exports = {
             // 编译css并自动添加css前缀
             {
                 test: /\.css$/,
-                 loader: extractSASS.extract('style', 'css')
+                loader: extractSASS.extract('style-loader', 'css-loader?sourceMap!cssnext-loader')
             },
             //.scss 文件想要编译，scss就需要这些东西！来编译处理
             {
                 test: /\.scss$/,
-                loader: extractSASS.extract(['css', 'sass'])
+                loader: extractSASS.extract(['css-loader', 'sass-loader'])
             },
             //html模板编译？
             {
@@ -121,8 +121,10 @@ module.exports = {
     },
     vue: {
         loaders: {
-            css: 'style!css!autoprefixer!scss'
+            css: extractSASS.extract("style-loader", "css-loader?sourceMap!cssnext-loader")
         }
     },
     plugins: getPlugins(),
 }
+
+// css: 'style!css!autoprefixer!scss'
