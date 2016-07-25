@@ -46,7 +46,7 @@ const getPlugins = function() {
 module.exports = {
     entry: {
         index: './src/main.js',
-        vendors: ['vue', 'vue-router', 'fastclick'],
+        vendors: ['vue', 'vue-router', 'fastclick', 'vue-async-data', 'vue-resource'],
     },
     output: {
         path: path.join(__dirname, './build'),
