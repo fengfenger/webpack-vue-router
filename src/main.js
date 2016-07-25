@@ -17,7 +17,7 @@ import App from './app.vue';
 
 // 自定义过滤器
 var filters = require('./filters');
-Object.keys(filter).forEach(function(k) {
+Object.keys(filters).forEach(function(k) {
   Vue.filter(k, filter[k]);
 });
 
