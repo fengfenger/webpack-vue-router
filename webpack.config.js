@@ -4,7 +4,33 @@ var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
+// webpack扩展功能
+var rmdir = require('./bin/rmdir.js');
+var compile = require('./bin/compile.js');
+var alias = require('./bin/alias.js');
+// 清理目录
+rmdir('./build/');
+
 const publicPath = 'http://localhost:8080/';
+
+// webpack插件方法
+const getPlugins = function() {
+    const plugins = [
+        new HtmlwebpackPlugin({
+            title: 'startV',
+            template: './index.html',
+            filename: 'index.html',
+            chunks: ['index', 'vendors'],
+            inject: 'body'
+        }),
+        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.NoErrorsPlugin(),
+        new webpack.BannerPlugin('vue')
+    ];
+    return plugins;
+}
+
 
 module.exports = {
     entry: {
@@ -33,12 +59,8 @@ module.exports = {
         }
     },
     resolve: {
-        extensions: ['', '.js', '.vue'],
-        alias: {
-            views: path.join(__dirname, './src/views'),
-            components: path.join(__dirname, './src/components'),
-            rem: path.join(__dirname,'./src/utils/rem')
-        }
+        extensions: ['', '.js', '.vue', '.scss', '.png', '.jpg'],
+        alias: alias
     },
     //babel重要的loader在这里
     module: {
@@ -88,17 +110,5 @@ module.exports = {
             css: 'style!css!autoprefixer'
         }
     },
-    plugins: [
-        new HtmlwebpackPlugin({
-            title: 'My first react app',
-            template: './index.html',
-            filename: 'index.html',
-            chunks: ['index', 'vendors'],
-            inject: 'body'
-        }),
-        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new webpack.BannerPlugin('vue')
-    ]
+    plugins: getPlugins(),
 }
