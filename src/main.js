@@ -1,3 +1,7 @@
+// 手机端的适配
+import './styles/main.scss';
+import './utils/rem.js';
+
 import Vue from 'vue';
 Vue.config.debug = true;
 import VueRouter from 'vue-router';

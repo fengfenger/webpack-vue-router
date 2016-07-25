@@ -36,7 +36,8 @@ module.exports = {
         extensions: ['', '.js', '.vue'],
         alias: {
             views: path.join(__dirname, './src/views'),
-            components: path.join(__dirname, './src/components')
+            components: path.join(__dirname, './src/components'),
+            rem: path.join(__dirname,'./src/utils/rem')
         }
     },
     //babel重要的loader在这里
