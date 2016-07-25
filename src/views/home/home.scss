@@ -1,3 +1,7 @@
+@function px2rem($px) {//$px为需要转换的字号
+  @return $px / 37.5px * 1rem; //75px为根字体大小
+}
+
 $qwe:#2DD8AD;
 body {
     background-color: $qwe;
@@ -13,4 +17,9 @@ h2 {
 a {
     font-size: 34px;
     color: black;
+}
+
+#test{
+    background: pink;
+    height: px2rem(100px);
 }

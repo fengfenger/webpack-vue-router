@@ -1,3 +1,12 @@
 // 入口sccs
+@function px2rem($px) {//$px为需要转换的字号
+  @return $px / 37.5px * 1rem; //75px为根字体大小
+}
+
 @import "./common/reset.scss";
 @import "./common/common.scss";
+.grid{
+    width: px2rem(300px);
+    background: red;
+    margin-top: 100px;
+}
