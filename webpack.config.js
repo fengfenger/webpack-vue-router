@@ -4,7 +4,15 @@ var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractSASS = new ExtractTextPlugin('[contenthash:8].[name].css');
+var extractSASS = new ExtractTextPlugin('[contenthash:8].[name].css', {
+    allChunks: true,
+    disable: false
+});
+
+// 判断开发环境还是正式环境
+var isProduction = function() {
+    return process.env.NODE_ENV === 'production';
+}
 
 // webpack扩展功能
 var rmdir = require('./bin/rmdir.js');
@@ -87,7 +95,7 @@ module.exports = {
             //.scss 文件想要编译，scss就需要这些东西！来编译处理
             {
                 test: /\.scss$/,
-                loader: extractSASS.extract(['css','sass'])
+                loader: extractSASS.extract(['css', 'sass'])
             },
             //html模板编译？
             {
@@ -98,14 +106,14 @@ module.exports = {
                 loader: 'url-loader',
                 query: {
                     limit: 8192,
-                    name: './images/[name].[ext]?[hash:8]'
+                    name: './src/assets/[name].[ext]?[hash:8]'
                 }
             },
         ]
     },
     // 转化成es5的语法
     babel: {
-        presets: ['es2015'],
+        presets: ['es2015', 'stage-0'],
         plugins: ['transform-runtime']
     },
     vue: {

@@ -3,6 +3,10 @@ import list from './views/list/list.js'
 
 export default function(router) {
     router.map({
+        '*': {
+            name: 'home',
+            component: home
+        },
         '/': {
             name: 'home',
             component: home
