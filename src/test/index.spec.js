@@ -1,3 +1,4 @@
+// 测试代码
 var chai = require('chai');
 var expect = chai.expect;
 describe('test',function(){
