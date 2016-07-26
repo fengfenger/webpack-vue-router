@@ -5,9 +5,5 @@
 
 @import "./common/reset.scss";
 @import "./common/common.scss";
-.grid{
-    width: px2rem(300px);
-    background: red;
-    margin: 0 auto;
-    margin-top: 100px;
-}
+@import "./views/home/home.scss";
+@import "./views/list/list.scss"

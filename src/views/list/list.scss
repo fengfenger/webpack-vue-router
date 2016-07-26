@@ -1,9 +1,0 @@
-@function px2rem($px) {//$px为需要转换的字号
-  @return $px / 37.5px * 1rem; //75px为根字体大小
-}
-
-li{
-    height: px2rem(30px);
-    line-height: px2rem(30px);
-    list-style: none;
-}

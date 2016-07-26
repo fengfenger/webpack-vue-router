@@ -1,5 +1,5 @@
-import home from './views/home/home.js'
-import list from './views/list/list.js'
+import home from './views/home.vue'
+import list from './views/list.vue'
 
 export default function(router) {
     router.map({

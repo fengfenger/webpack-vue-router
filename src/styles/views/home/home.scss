@@ -1,0 +1,20 @@
+$qwe:#2DD8AD;
+body {
+    background-color: $qwe;
+    color: red;
+}
+h1 {
+    background-color: blue;
+    color: red;
+}
+h2 {
+    height: px2rem(100px);
+    background-color: purple;
+}
+a {
+    font-size: px2rem(34px);
+    color: black;
+}
+.mt-range-thumb{
+    background: red;
+}

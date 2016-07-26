@@ -1,17 +1,22 @@
-import './home.scss';
-
-import Vue from 'vue';
-
-
-import { Range } from 'mint-ui';
-Vue.component(Range.name, Range);
-import { Picker } from 'mint-ui';
-Vue.component(Picker.name, Picker);
-
-module.exports = {
-    template: require('./home.html'),
-    replace: false,
-    data: function() {
+<template>
+    <div>
+        <h1>姓名{{name}}</h1>
+        <h2>这里是年龄啊： {{age}}</h2>
+    </div>
+    <div class="">
+        <mt-range :value.sync="rangeValue"></mt-range>
+        <span>{{rangeValue}}</span>
+        <mt-picker :slots="slots" @change="onValuesChange"></mt-picker>
+    </div>
+</template>
+<script>
+    import Vue from 'vue';
+    import { Range } from 'mint-ui';
+    Vue.component(Range.name, Range);
+    import { Picker } from 'mint-ui';
+    Vue.component(Picker.name, Picker);
+export default {
+    data() {
         return {
             name: "guowenfh",
             age: "21",
@@ -32,9 +37,8 @@ module.exports = {
                 textAlign: 'left'
             }]
         }
-    },
-    methods: {
-        golist: function() {
+    }, methods: {
+        golist() {
             this.$route.router.go({
                 name: "list"
             });
@@ -45,7 +49,11 @@ module.exports = {
             }
         }
     },
-    components: {
-
+    components:{
     }
 }
+</script>
+
+<style lang="sass">
+    
+</style>
