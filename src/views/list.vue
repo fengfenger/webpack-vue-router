@@ -2,6 +2,7 @@
     export default{
         data () {
             return {
+                message:1,
                 peoples:[{
                     name: "小红",
                     age:20
@@ -24,11 +25,13 @@
 </script>
 <template>
 <ul>
+    <input type="test" name="name"   v-model="message" value=""/>
+    <span>{{message}}</span>
     <li v-for="person in peoples">
         {{person.name}} : {{person.age}}
     </li>
 </ul>
 </template>
 <style lang="sass">
-    
+
 </style>

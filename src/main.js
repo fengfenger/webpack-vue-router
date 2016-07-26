@@ -18,7 +18,7 @@ import App from './app.vue';
 // 自定义过滤器
 var filters = require('./filters');
 Object.keys(filters).forEach(function(k) {
-  Vue.filter(k, filter[k]);
+    Vue.filter(k, filter[k]);
 });
 
 
@@ -28,7 +28,12 @@ Vue.use(VueAsyncData);
 
 var router = new VueRouter({
     hashbang: false,
+    history: false,
+    saveScrollPosition: true,
+    transitionOnLoad: true
 });
+
+//登录中间验证，页面需要登录而没有登录的情况直接跳转登录
 
 registerRouters(router);
 
