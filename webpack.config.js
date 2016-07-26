@@ -107,7 +107,16 @@ module.exports = {
                     limit: 8192,
                     name: './src/assets/[name].[ext]?[hash:8]'
                 }
-            },
+            }, {
+                test: /\.json$/,
+                loader: 'json'
+            }, {
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "file-loader"
+            }, {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "url-loader?limit=10000&minetype=application/font-woff"
+            }
         ]
     },
     // 转化成es5的语法
