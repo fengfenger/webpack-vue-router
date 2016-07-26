@@ -1,5 +1,4 @@
 // 手机端的适配
-import './utils/rem.js';
 import './styles/main.scss';
 
 

@@ -5,7 +5,6 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractSASS = new ExtractTextPlugin('[contenthash:8].[name].css', {
-    allChunks: true,
     disable: false
 });
 
@@ -90,12 +89,12 @@ module.exports = {
             // 编译css并自动添加css前缀
             {
                 test: /\.css$/,
-                loader: extractSASS.extract('style-loader', 'css-loader?sourceMap')
+                loader: extractSASS.extract('style-loader', 'css-loader?sourceMap!cssnext-loader')
             },
             //.scss 文件想要编译，scss就需要这些东西！来编译处理
             {
                 test: /\.scss$/,
-                loader: extractSASS.extract(['css-loader?sourceMap', 'sass-loader'])
+                loader: extractSASS.extract(['css-loader?sourceMap!cssnext-loader', 'sass-loader'])
             },
             //html模板编译？
             {
@@ -121,7 +120,7 @@ module.exports = {
     },
     vue: {
         loaders: {
-            css: extractSASS.extract("style-loader", "css-loader?sourceMap")
+            css: extractSASS.extract("style-loader", "css-loader?sourceMap!cssnext-loader")
         }
     },
     plugins: getPlugins(),
